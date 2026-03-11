@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "test:ui": "playwright test specs/ui",
-    "test:api": "playwright test specs/api",
+    "test:ui": "playwright test --project=chromium",
+    "test:api": "playwright test --project=api",
     "test:headed": "playwright test --headed",
     "test:report": "playwright show-report",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "launch:api-server": "test-api-server --port 3000",
+    "launch:ui-server": "react-test-app --port 3001",
+    "launch:servers": "concurrently \"npm:launch:api-server\" \"npm:launch:ui-server\""
   },
   "repository": {
     "type": "git",
@@ -27,10 +30,14 @@
   },
   "homepage": "https://github.com/ergilly/playwright_framework#readme",
   "devDependencies": {
+    "@ergilly/react-test-app": "^0.1.0",
+    "@ergilly/test-api-server": "^1.0.1",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.58.2",
+    "@types/node": "^25.4.0",
     "@typescript-eslint/eslint-plugin": "^8.57.0",
     "@typescript-eslint/parser": "^8.57.0",
+    "concurrently": "^9.2.1",
     "eslint": "^10.0.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-playwright": "^2.9.0",

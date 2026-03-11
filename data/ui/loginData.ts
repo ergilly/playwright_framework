@@ -1,10 +1,10 @@
 export const loginData = {
   validUser: {
-    username: 'testuser',
-    password: 'Password123!',
+    username: 'admin',
+    password: 'password123',
   },
   invalidUser: {
-    username: 'wronguser',
-    password: 'wrongpassword',
+    username: 'admin',
+    password: 'wrongPassword',
   },
-};
+} as const;
