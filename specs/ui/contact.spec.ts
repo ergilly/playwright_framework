@@ -22,8 +22,14 @@ test.describe('Contact Page', () => {
     await contactPage.actions.fillForm(contactData.validMessage);
     await contactPage.elements.submitButton.click();
 
-    await expect(contactPage.elements.successMessage).toBeVisible();
     await expect(contactPage.elements.successMessage).toContainText('Message Sent!');
-    await expect(contactPage.elements.sendAnotherButton).toBeVisible();
+    await expect(contactPage.elements.successMessage).toContainText(`Thank you, ${contactData.validMessage.name}! Your message has been received. We'll be in touch at ${contactData.validMessage.email} soon.`);
+  });
+
+  test('should allow users to submit another message after successful submission', async ({ contactPage }) => {
+    await contactPage.actions.fillForm(contactData.validMessage);
+    await contactPage.elements.submitButton.click();
+    await contactPage.elements.sendAnotherButton.click();
+    await expect(contactPage.elements.title).toContainText('Contact Us');
   });
 });
