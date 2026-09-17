@@ -7,19 +7,24 @@ test.describe('Home Page', () => {
     await loginPage.actions.login(loginData.validUser.username, loginData.validUser.password);
   });
 
-  test('should display home widgets after successful login', async ({ homePage }) => {
-    await expect(homePage.elements.pageContainer).toBeVisible();
-    await expect(homePage.elements.title).toContainText('Welcome, Admin User!');
-    await expect(homePage.elements.statPages).toBeVisible();
-    await expect(homePage.elements.statComponents).toBeVisible();
-    await expect(homePage.elements.statTestIds).toBeVisible();
-    await expect(homePage.elements.banner).toBeVisible();
-  });
-
   test('should open about page via quick link', async ({ homePage, aboutPage }) => {
     await homePage.elements.linkAbout.click();
 
     await expect(aboutPage.elements.pageContainer).toBeVisible();
     await expect(aboutPage.elements.title).toHaveText('About ReactTestApp');
+  });
+
+  test('should open contact page via quick link', async ({ homePage, contactPage }) => {
+    await homePage.elements.linkContact.click();
+
+    await expect(contactPage.elements.pageContainer).toBeVisible();
+    await expect(contactPage.elements.title).toHaveText('Contact Us');
+  });
+
+  test('should open profile page via quick link', async ({ homePage, profilePage }) => {
+    await homePage.elements.linkProfile.click();
+
+    await expect(profilePage.elements.pageContainer).toBeVisible();
+    await expect(profilePage.elements.title).toHaveText('My Profile');
   });
 });

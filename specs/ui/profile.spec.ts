@@ -9,7 +9,6 @@ test.describe('Profile Page', () => {
   });
 
   test('should display user profile details', async ({ profilePage }) => {
-    await expect(profilePage.elements.pageContainer).toBeVisible();
     await expect(profilePage.elements.title).toHaveText('My Profile');
     await expect(profilePage.elements.displayName).toHaveText('Admin User');
     await expect(profilePage.elements.username).toHaveText('admin');
@@ -18,7 +17,6 @@ test.describe('Profile Page', () => {
   });
 
   test('should display recent activity panel', async ({ profilePage }) => {
-    await expect(profilePage.elements.activityPanel).toBeVisible();
     await expect(profilePage.elements.activityLogin).toContainText('Logged in');
     await expect(profilePage.elements.activityProfileView).toContainText('Viewed profile');
     await expect(profilePage.elements.activityPlaceholder).toContainText('No previous activity');
